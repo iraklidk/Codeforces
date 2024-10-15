@@ -1,6 +1,6 @@
 //IrakliDK
-//https://codeforces.com/contest/2025/problem/B
- 
+//https://codeforces.com/problemset/problem/2019/A
+
 const int mod = 1e9+7;
 using namespace std;
 #include <bits/stdc++.h>
@@ -27,17 +27,29 @@ const int diri[8] = { -1, 0, 0, 1, -1, -1, 1, 1 };
 const int dirj[8] = { 0, 1, -1, 0, -1, 1, -1, 1 };
 ll max(ll k, ll b) {if(k > b) return k; else return b;}
 ll min(ll k, ll b) {if(k < b) return k; else return b;}
-ll pwr(ll a, ll b) {ll r=1;while(b){if(b&1)(r*=a)%=mod;(a*=a)%=mod;b>>=1;}return r;}
-
  
 int main()
 {
-    int t; cin >> t;
-    vll a(t), b(t);
-    forr(i, t) cin >> a[i];
-    forr(i, t) cin >> b[i];
- 
-    forr(i, t) {
-        cout << pwr(2, b[i]) << endl;
+    int tc; cin >> tc; while(tc--) {
+
+        int n; cin >> n; vll vec(n); 
+        ll mx = INT_MIN, idx = 0, ans = 0;
+        forr(i, n) {
+            cin >> vec[i];
+            if(vec[i] > mx) {
+                mx = vec[i];
+                idx = i;
+            }
+        }
+
+        ans += mx;
+        
+        if(!(n & 1)) ans += n / 2;
+        else {
+            ans += n / 2;
+            for(int i = 0; i < n; i++) if(vec[i] == mx && !(i & 1)) {ans ++; break;}
+        }
+
+        cans;
     }
 }
